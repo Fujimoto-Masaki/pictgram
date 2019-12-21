@@ -144,9 +144,15 @@ h1, h2 {
       width: 35px;
       height: 30px;
       margin-left: 20px;
+      background-size: contain;
     }
 
-    .favorite-red {
+    .disable-icon {
+      background-image: url(icons/heart-black.png);
+    }
+
+    .active-icon {
+      background-image: url(icons/heart.png);
       -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
       filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
     }

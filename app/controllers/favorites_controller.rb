@@ -7,7 +7,6 @@ class FavoritesController < ApplicationController
     favorite = Favorite.new
     favorite.user_id = current_user.id
     favorite.topic_id = params[:topic_id]
-    #@favorites_count = Favorite.where(user_id: current_user.id).count
 
     if favorite.save
       redirect_to topics_path, success: 'お気に入りに登録しました'
@@ -17,7 +16,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = Favorite.find_by(user_id: current_user.id, topic_id: params[:topic_id])
+    favorite = Favorite.find_by(user_id: current_user.id, topic_id: topic_id_params[:topic_id])
     if favorite.destroy
       redirect_to topics_path, success: 'お気に入りから削除しました'
     else
@@ -25,17 +24,8 @@ class FavoritesController < ApplicationController
     end
   end
 
-  #def user_id_params
-    #params.require(:user_id).permit(:current_user.id)
-  #end
-
-  #def topic_id_params
-    #params.require(:topic_id).permit(:topic_id)
-  #end
-
-  #または
-  #def favorite_params
-    #params.require(:favorite).permit(:user_id,:topic_id)
-  #end
+  def topic_id_params
+    params.permit(:topic_id)
+  end
 
 end
