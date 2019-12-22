@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">Add Comment</h1>
-        <% if @topic.errors.any? %>
+        <% if @comment.errors.any? %>
           <div id="‘messages’">
             <ul>
-              <% @topic.errors.full_messages.each do |message| %>
+              <% @comment.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
             </ul>

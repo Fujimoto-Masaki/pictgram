@@ -8,12 +8,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.new
+    @comment = Comment.new
     #topic = Topic.find(params[:topic_id])
-    @comment = topic.comments.new(comment_params, params[:topic_id])
+    @comment = topic.comments.new(comment_params)
     #topic_idを渡す必要がある
     if @comment.save
-      redirect_to topics_path, success: = "コメントしました"
+      redirect_to topics_path, success: "コメントしました"
       #redirect_back(fallback_location: image_url(topic.id))
     else
       flash.now[:danger] = "コメントできません"
