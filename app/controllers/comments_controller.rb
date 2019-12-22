@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+  #def index
+    #@comments = Comment.all
+  #end
+
   def new
     @comment = Comment.new
   end
@@ -18,12 +22,12 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    topic = Topic.find(params[:topic_id])
-    @comment = topic.comments.find(params[:id])
-    @comment.destroy
-    redirect_back(fallback_location: topic_path(topic)
-  end
+  #def destroy
+    #topic = Topic.find(params[:topic_id])
+    #@comment = topic.comments.find(params[:id])
+    #@comment.destroy
+    #redirect_back(fallback_location: topic_path(topic)
+  #end
 
   private
   def content_params

@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
   belongs_to :topic
-  validetes :content, presence: true
+  validates :content, presence: true
 end
