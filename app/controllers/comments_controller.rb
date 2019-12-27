@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new
+    #@comment = Comment.new
     #topic = Topic.find(params[:topic_id])
     @comment = topic.comments.new(comment_params)
     #topic_idを渡す必要がある
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   #end
 
   private
-  def content_params
+  def comment_params
     params.require(:comment).permit(:content)
   end
 end

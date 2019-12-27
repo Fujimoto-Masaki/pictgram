@@ -18,7 +18,7 @@
               <% end %>
             <% end %>
             <%= topic.favorite_users.count %>
-            <%= link_to new_comment_path(topic_id: topic.id) do %>
+            <%= link_to topic_comments_path(topic_id: topic.id), method: :post do %>
               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <% end %>
             <p class="topic-text">
