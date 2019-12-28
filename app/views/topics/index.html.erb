@@ -18,17 +18,19 @@
               <% end %>
             <% end %>
             <%= topic.favorite_users.count %>
-            <%= link_to topic_comments_path(topic_id: topic.id), method: :post do %>
+            <%= link_to new_topic_comment_path(topic_id: topic.id) do %>
               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <% end %>
             <p class="topic-text">
               <%= topic.description %>
             </p>
+            <Hr>
             <% topic.comments.each do |comment| %>
               <p class="topic-text">
                 <%= comment.content %>
               </p>
             <% end %>
+            </Hr>
           </div>
         </div>
       </div>

@@ -4,13 +4,14 @@ class CommentsController < ApplicationController
   #end
 
   def new
+    #@topic = Topic.find(params[:topic_id])
     @comment = Comment.new
   end
 
   def create
-    #@comment = Comment.new
-    #topic = Topic.find(params[:topic_id])
-    @comment = topic.comments.new(comment_params)
+    #@topic = Topic.find(params[:topic_id])
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
     #topic_idを渡す必要がある
     if @comment.save
       redirect_to topics_path, success: "コメントしました"
@@ -23,14 +24,14 @@ class CommentsController < ApplicationController
   end
 
   #def destroy
-    #topic = Topic.find(params[:topic_id])
-    #@comment = topic.comments.find(params[:id])
+    #@topic = Topic.find(params[:topic_id])
+    #@comment = @topic.comment.find(params[:id])
     #@comment.destroy
     #redirect_back(fallback_location: topic_path(topic)
   #end
 
   private
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:topic_id, :content)
   end
 end
