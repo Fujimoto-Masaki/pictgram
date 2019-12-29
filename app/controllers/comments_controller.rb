@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
     #@topic = Topic.find(params[:topic_id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    #topic_idを渡す必要がある
     if @comment.save
       redirect_to topics_path, success: "コメントしました"
       #redirect_back(fallback_location: image_url(topic.id))
