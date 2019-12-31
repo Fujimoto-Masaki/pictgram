@@ -9,16 +9,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-    #@topic = Topic.find(params[:topic_id])
-    @comment = Comment.new(comment_params)
+    @topic = Topic.find(params[:topic_id])
+    @comment = @topic.comments.new(comment_params)
     @comment.user_id = current_user.id
+
     if @comment.save
       redirect_to topics_path, success: "コメントしました"
-      #redirect_back(fallback_location: image_url(topic.id))
     else
       flash.now[:danger] = "コメントできません"
       render :new
-      #redirect_back(fallback_location: image_url(topic.id))
     end
   end
 
@@ -31,6 +30,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:topic_id, :content)
+    params.require(:comment).permit(:content)
   end
+
 end
