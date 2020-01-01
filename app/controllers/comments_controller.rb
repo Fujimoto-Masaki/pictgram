@@ -9,8 +9,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @topic = Topic.find(params[:topic_id])
-    @comment = @topic.comments.new(comment_params)
+    #@topic = Topic.find(params[:topic_id])
+    @comment = Comment.new(comment_params)
+    @comment.topic_id = params[:topic_id]
     @comment.user_id = current_user.id
 
     if @comment.save
